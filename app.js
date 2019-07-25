@@ -45,30 +45,34 @@ let workWithString = (function() {
 let calculator = (function() {
   let result;
 
-  let setValue = value => {
+  function setValue(value) {
     if (isNaN(value)) return console.error(`Enter the number`);
-    else return (result = value);
-  };
-
-  let addValue = value => (result += value);
-
-  let multiplyByValue = value => {
+    else result = value;
+    return this;
+  }
+  function addValue(value) {
+    result += value;
+    return this;
+  }
+  function multiplyByValue(value) {
     result *= value;
     return this;
-  };
-  let substractValue = value => {
+  }
+  function substractValue(value) {
     result -= value;
     return this;
-  };
-  let divideByValue = value => {
+  }
+  function divideByValue(value) {
     result /= value;
     return this;
-  };
-  let powValue = value => {
+  }
+  function powValue(value) {
     result = Math.pow(result, value);
     return this;
-  };
-  let getResult = () => result.toFixed(2);
+  }
+  function getResult() {
+    return result.toFixed(2);
+  }
 
   return {
     setValue,
@@ -80,10 +84,6 @@ let calculator = (function() {
     getResult
   };
 })();
-
-console.log(calculator.setValue(10));
-console.log(calculator.powValue(2));
-console.log(calculator.getResult());
 
 console.log(
   calculator
